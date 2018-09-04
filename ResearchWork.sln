@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecognitionLibrary", "RecognitionLibrary\RecognitionLibrary.csproj", "{B27BC1C1-AEC5-4048-A70F-D598340FA414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageFast", "..\..\..\..\Desktop\ImageFast\ImageFast.csproj", "{1B57650C-8410-46F0-B995-9CBCF5B00384}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageFast", "ImageFast\ImageFast.csproj", "{1B57650C-8410-46F0-B995-9CBCF5B00384}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
