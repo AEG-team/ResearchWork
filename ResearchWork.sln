@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecognitionLibrary", "RecognitionLibrary\RecognitionLibrary.csproj", "{B27BC1C1-AEC5-4048-A70F-D598340FA414}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchingLibrary", "MatchingLibrary\MatchingLibrary.csproj", "{EE5D97E8-A329-4D27-AC41-7CE8951A5206}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NormalizationLibrary", "NormalizationLibrary\NormalizationLibrary.csproj", "{CD846961-F701-41CE-A7D5-4EC0D9F908D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisRecognitionLab", "IrisRecognitionLab\IrisRecognitionLab.csproj", "{A9464DC3-A497-424D-AE83-166596656A98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,8 +53,15 @@ Global
 		{CD846961-F701-41CE-A7D5-4EC0D9F908D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD846961-F701-41CE-A7D5-4EC0D9F908D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD846961-F701-41CE-A7D5-4EC0D9F908D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9464DC3-A497-424D-AE83-166596656A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9464DC3-A497-424D-AE83-166596656A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9464DC3-A497-424D-AE83-166596656A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9464DC3-A497-424D-AE83-166596656A98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D073CBC6-FEB5-4DE0-AB2F-416D29F445C8}
 	EndGlobalSection
 EndGlobal

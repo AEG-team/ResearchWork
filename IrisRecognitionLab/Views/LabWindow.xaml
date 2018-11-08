@@ -1,0 +1,65 @@
+﻿<Window x:Class="IrisRecognitionLab.Views.LabWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IrisRecognitionLab.Views"
+        mc:Ignorable="d"
+        Title="Iris Recognition Lab" Height="450" Width="800">
+    <Grid Background="LightYellow">
+        <!-- GRID MARKUP -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- MENU -->
+        <Menu Width="Auto" Height="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <MenuItem Header="_File">
+                <MenuItem x:Name="OpenImage" Header="_Open image..." HorizontalAlignment="Left" Width="180" Click="OpenImage_Click" />
+                <Separator />
+                <MenuItem x:Name="SaveImage" Header="_Save image" HorizontalAlignment="Left" Width="180" />
+                <MenuItem x:Name="SaveImageAs" Header="_Save image as..." HorizontalAlignment="Left" Width="180" />
+                <Separator />
+                <MenuItem x:Name="AppExit" Header="_Exit" HorizontalAlignment="Left" Width="180" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem x:Name="SegmentEye" Header="_Segment eye" HorizontalAlignment="Left" Width="180" Click="SegmentEye_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem x:Name="About" Header="_About" HorizontalAlignment="Left" Width="180"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- CONTENT -->
+        <Border Grid.Column="0" Grid.Row="1" Margin="4" BorderBrush="DarkOrchid" BorderThickness="4">
+            <Image x:Name="MainImageBox">
+
+            </Image>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1" Margin="4" BorderBrush="DarkOrchid" BorderThickness="4">
+            <!-- Segment eye options -->
+            <StackPanel x:Name="SegmentEyeOptions" Margin="5" Visibility="Hidden">
+                <Label Content="{Binding ElementName=CannyThresholdSlider, Path=Value}" ContentStringFormat="Canny tshreshold: {0:0}"/>
+                <Slider x:Name="CannyThresholdSlider" Maximum="255" Value="180"></Slider>
+                <Label Content="{Binding ElementName=CircleAccumulatorThresholdSlider, Path=Value}" ContentStringFormat="Circle accumulator threshold: {0:0}"/>
+                <Slider x:Name="CircleAccumulatorThresholdSlider" Maximum="255" Value="30"></Slider>
+                <Button x:Name="SegmentEyeButton" Content="Segment eye" Margin="0 5" Click="SegmentEyeButton_Click"></Button>
+            </StackPanel>
+            
+        </Border>
+
+
+        <!-- FOOTER -->
+        <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Height="auto" Background="DarkOrchid">
+            <Label Content="Status:" FontSize="10" Foreground="White"/>
+            <ProgressBar HorizontalAlignment="Right" Width="130px" Height="12px" Margin="10 0"/>
+        </DockPanel>
+
+    </Grid>
+</Window>
