@@ -1,5 +1,6 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
+using IrisRecognitionLab.Logic.Helpers;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -51,10 +52,11 @@ namespace IrisRecognitionLab.Views
 
         private void SegmentEye_Click(object sender, RoutedEventArgs e)
         {
+            HideAll();
             SegmentEyeOptions.Visibility = Visibility.Visible;
         }
 
-        public static Bitmap ConvertToBitmap(BitmapSource bitmapSource)
+        private static Bitmap ConvertToBitmap(BitmapSource bitmapSource)
         {
             var width = bitmapSource.PixelWidth;
             var height = bitmapSource.PixelHeight;
@@ -65,7 +67,7 @@ namespace IrisRecognitionLab.Views
             return bitmap;
         }
 
-        public BitmapImage ConvertToBitmapImage(Bitmap src)
+        private BitmapImage ConvertToBitmapImage(Bitmap src)
         {
             MemoryStream ms = new MemoryStream();
             ((System.Drawing.Bitmap)src).Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
@@ -75,6 +77,13 @@ namespace IrisRecognitionLab.Views
             image.StreamSource = ms;
             image.EndInit();
             return image;
+        }
+
+        private void HideAll()
+        {
+            SegmentEyeOptions.Visibility = Visibility.Hidden;
+            HistogramEyeOptions.Visibility = Visibility.Hidden;
+
         }
 
         private void SegmentEyeButton_Click(object sender, RoutedEventArgs e)
@@ -106,6 +115,41 @@ namespace IrisRecognitionLab.Views
                 eyeImage.Draw(circle, new Rgb(System.Drawing.Color.Red), 2);
                 Iris = circle;
             }
+
+            MainImageBox.Source = ConvertToBitmapImage(eyeImage.Bitmap);
+        }
+
+        private void HistogramEye_Click(object sender, RoutedEventArgs e)
+        {
+            HideAll();
+            HistogramEyeOptions.Visibility = Visibility.Visible;
+
+        }
+
+        private void HistogramTrasholdSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (MainImageBox.Source == null)
+                return;
+
+            double[] verticalHistogram = new double[workingImage.Height];
+            double[] horizontalHistogram = new double[workingImage.Width];
+
+            for (int y = 0; y < workingImage.Height; y++)
+            {
+                for (int x = 0; x < workingImage.Width; x++)
+                {
+                    verticalHistogram[y] += workingImage.GetGrayPixel(x, y);
+                    horizontalHistogram[x] += workingImage.GetGrayPixel(x, y);
+                }
+            }
+
+
+            int xx = Array.IndexOf(verticalHistogram, verticalHistogram.Max());
+            int yy = Array.IndexOf(horizontalHistogram, horizontalHistogram.Max());
+
+            Image<Rgb, byte> eyeImage = new Image<Rgb, byte>(workingImage);
+            int radius = (int)((workingImage.Height > workingImage.Width ? workingImage.Width : workingImage.Height) * HistogramTrasholdSlider.Value / 100);
+            eyeImage.Draw(new CircleF(new PointF(xx, yy), radius), new Rgb(System.Drawing.Color.Red), 2);
 
             MainImageBox.Source = ConvertToBitmapImage(eyeImage.Bitmap);
         }

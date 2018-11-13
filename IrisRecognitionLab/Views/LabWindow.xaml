@@ -30,6 +30,7 @@
             </MenuItem>
             <MenuItem Header="_Tools">
                 <MenuItem x:Name="SegmentEye" Header="_Segment eye" HorizontalAlignment="Left" Width="180" Click="SegmentEye_Click"/>
+                <MenuItem x:Name="HistogramEye" Header="_Histogram eye" HorizontalAlignment="Left" Width="180" Click="HistogramEye_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem x:Name="About" Header="_About" HorizontalAlignment="Left" Width="180"/>
@@ -43,15 +44,21 @@
             </Image>
         </Border>
         <Border Grid.Column="1" Grid.Row="1" Margin="4" BorderBrush="DarkOrchid" BorderThickness="4">
-            <!-- Segment eye options -->
-            <StackPanel x:Name="SegmentEyeOptions" Margin="5" Visibility="Hidden">
-                <Label Content="{Binding ElementName=CannyThresholdSlider, Path=Value}" ContentStringFormat="Canny tshreshold: {0:0}"/>
-                <Slider x:Name="CannyThresholdSlider" Maximum="255" Value="180"></Slider>
-                <Label Content="{Binding ElementName=CircleAccumulatorThresholdSlider, Path=Value}" ContentStringFormat="Circle accumulator threshold: {0:0}"/>
-                <Slider x:Name="CircleAccumulatorThresholdSlider" Maximum="255" Value="30"></Slider>
-                <Button x:Name="SegmentEyeButton" Content="Segment eye" Margin="0 5" Click="SegmentEyeButton_Click"></Button>
-            </StackPanel>
-            
+            <Grid>
+                <!-- Segment eye options -->
+                <StackPanel x:Name="SegmentEyeOptions" Margin="5" Visibility="Hidden">
+                    <Label Content="{Binding ElementName=CannyThresholdSlider, Path=Value}" ContentStringFormat="Canny tshreshold: {0:0}"/>
+                    <Slider x:Name="CannyThresholdSlider" Maximum="255" Value="180"></Slider>
+                    <Label Content="{Binding ElementName=CircleAccumulatorThresholdSlider, Path=Value}" ContentStringFormat="Circle accumulator threshold: {0:0}"/>
+                    <Slider x:Name="CircleAccumulatorThresholdSlider" Maximum="255" Value="30"></Slider>
+                    <Button x:Name="SegmentEyeButton" Content="Segment eye" Margin="0 5" Click="SegmentEyeButton_Click"></Button>
+                </StackPanel>
+                <!-- Histogram eye options -->
+                <StackPanel x:Name="HistogramEyeOptions" Margin="5" Visibility="Hidden">
+                    <Label Content="Histogram trashold" />
+                    <Slider x:Name="HistogramTrasholdSlider" Maximum="100" Value="30" ValueChanged="HistogramTrasholdSlider_ValueChanged"></Slider>
+                </StackPanel>
+            </Grid>
         </Border>
 
 
